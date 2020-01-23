@@ -9,10 +9,14 @@ x = torch.empty(5, 3)
 print(type(x))    # torch.Tensor
 print(x.dtype)
 print(x.size())    # 5, 3
-print(x)
+print("Empty tensor:", x)
 
 x = torch.rand(5, 3)
 print(x)
+
+# Normal distribution with mean 0 and variance 1, aka standard normal distribution.
+x = torch.randn(5, 3)
+print("Standard normal distribution:", x)
 
 x = torch.zeros(5, 3, dtype=torch.long)
 print(x)
