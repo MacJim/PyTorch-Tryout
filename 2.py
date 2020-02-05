@@ -34,3 +34,13 @@ print(z1.size())
 print(z1)
 print(z2.size())
 print(z2)
+
+
+x = torch.Tensor(list(range(8)))
+y = x.view(2, 1, 2, 2)
+z = y.view(2, 2, 2)
+
+print(y.size())
+print(y)
+print(z.size())
+print(z)
