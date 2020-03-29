@@ -32,6 +32,9 @@ x = torch.ones(5)
 print(x)
 print(x.size())
 
+x = torch.eye(5)    # Yes! A single parameter is enough.
+print(x)
+
 
 # MARK: One element tensor
 x = torch.ones(1, 1)
