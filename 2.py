@@ -15,6 +15,22 @@ print(y)
 y += 2    # It works! Every element got increased by 2.
 print(y)
 
+x = torch.Tensor([[1, 2], [3, 4]])
+y = torch.ones(2, 2)
+z = x * y
+print("Element multiply:", z)    # This is element wise multiply.
+z = x @ y
+print("Matrix multiply:", z)
+
+
+# MARK: Batch operation
+x = torch.Tensor(list(range(4)))
+print("Before batch add:", x)
+x += 1
+print("After batch add:", x)
+x *= 2
+print("After batch mul:", x)
+
 
 # MARK: Size
 x = torch.ones(5, 3)
@@ -44,3 +60,21 @@ print(y.size())
 print(y)
 print(z.size())
 print(z)
+
+
+# MARK: Sum
+x = torch.Tensor(list(range(20)))
+x = x.reshape(4, -1)
+print("x:", x)
+
+y = torch.sum(x, dim=0)
+z = torch.sum(x, dim=1)
+print("Dim 0 sum:", y)
+print("Dim 1 sum:", z)
+
+
+# MARK: Power
+x = torch.Tensor(list(range(4)))
+x = x.reshape(2, 2)
+y = torch.pow(x, 2)
+print("y:", y)
