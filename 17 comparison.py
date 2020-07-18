@@ -104,4 +104,18 @@ def test_larger_smaller_2():
     print(x2 < x3)    # tensor([False, False, False])
 
 
-test_larger_smaller_2()
+# MARK: Sum up
+def test_larger_smaller_11():
+    """
+    We can sum up `True` values in `bool` tensors.
+    """
+    x1 = torch.tensor(list(range(16)))
+
+    print(x1 < 6)    # tensor([ True,  True,  True,  True,  True,  True, False, False, False, False, False, False, False, False, False, False])
+    print((x1 < 6).sum())    # tensor(6)
+
+    print(x1 < 10)    # tensor([ True,  True,  True,  True,  True,  True,  True,  True,  True,  True, False, False, False, False, False, False])
+    print((x1 < 10).sum())    # tensor(10)
+
+
+test_larger_smaller_11()
