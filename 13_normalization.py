@@ -37,6 +37,42 @@ def test_L2_normalization_2():
     print(f"L2 normalized: {F.normalize(x1, p=1, dim=0)}")    # RuntimeError: Can only calculate the mean of floating types. Got Long instead.
 
 
+# MARK: - Batch norm
+def test_batch_norm_1():
+    x1 = torch.Tensor(list(range(-20, 20)))
+    x1 = x1.view(4, -1)    # Simulates 4 batches, each containing 10 elements.
+    print("x1:", x1)
+
+    x2 = torch.Tensor(list(range(40)))
+    x2 = x2.view(4, -1)
+    print("x2:", x2)
+
+    x3 = list(range(40))
+    random.shuffle(x3)
+    x3 = torch.Tensor(x3)
+    x3 = x3.view(4, -1)
+    print("x3:", x3)
+
+    # Normalize the element of different batches.
+    batch_norm = torch.nn.BatchNorm1d(x1.shape[1])
+    # batch_norm = torch.nn.BatchNorm1d(10)
+
+    y1 = batch_norm(x1)
+    print("y1:", y1)
+    mean1 = torch.mean(y1, dim=0)
+    print("Mean 1:", mean1)
+
+    y2 = batch_norm(x2)
+    print("y2:", y2)    # The same with y1.
+    mean2 = torch.mean(y2, dim=0)
+    print("Mean 2:", mean2)
+
+    y3 = batch_norm(x3)
+    print("y3:", y3)
+    mean3 = torch.mean(y3, dim=0)
+    print("Mean 3:", mean3)
+
+
 # MARK: - Main
 if (__name__ == "__main__"):
     test_L1_normalization_1()
